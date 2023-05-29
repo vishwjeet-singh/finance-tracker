@@ -4,7 +4,7 @@ import { Paper } from "@mui/material";
 export default function TransactionCard(transaction) {
   return (
     <div className="container">
-      <Paper elevation={3} className="transaction-paper">
+      <Paper elevation={1} className="transaction-paper">
         <div className="icon-name-date">
           <div className="icon"></div>
           <div className="name-date">

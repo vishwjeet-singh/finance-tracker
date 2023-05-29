@@ -3,7 +3,7 @@ import "./CategoryCards.scss";
 import { Paper } from "@mui/material";
 export default function CategoryCards(category) {
   return (
-    <Paper className="category-paper" elevation={2} >
+    <Paper className="category-paper" elevation={1} >
       <div className="category-container">
         <div className="category-icon"></div>
         <div className="name-amt">

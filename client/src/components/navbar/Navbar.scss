@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 20%;
   height: 100vh;
-  
+  // background-color: #9ec7a2;
   .title {
     margin-top: 3rem;
     font-size: 2rem;
@@ -23,9 +23,10 @@
         text-decoration: none;
         color: #a6b1b0;
         font-size: 1rem;
-        font-weight: 200;
+        font-weight: 300;
         &:hover {
           color: #000000;
+          font-weight: 400;
         }
       }
     }

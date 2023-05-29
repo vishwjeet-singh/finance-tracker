@@ -53,11 +53,11 @@ export default function LineGraph({
   //EFFECTS
   //RENDER
   return (
-    <div className="line-graph">
       <Paper
         className="design-paper"
         variant="outlined"
         sx={{ width: "300px" }}
+        elevation={1}
       >
         <div className="heading-container">
           <div>
@@ -93,7 +93,6 @@ export default function LineGraph({
           <div className="err">{err}</div>
         )}
       </Paper>
-    </div>
   );
 }
 
