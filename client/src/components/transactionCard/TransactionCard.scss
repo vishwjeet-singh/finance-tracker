@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  .transaction-paper {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    color: #555252;
+    .icon-name-date {
+      display: flex;
+      flex-direction: row;
+
+      .icon {
+        width: 3rem;
+        height: 3rem;
+        background-color: gray;
+        margin-right: 1.5rem;
+      }
+      .name-date{
+        
+        .name{
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .date{
+            font-size: 0.7rem;
+        }
+      }
+    }
+      .amount{
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+  }
+}

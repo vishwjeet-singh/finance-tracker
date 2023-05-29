@@ -1,0 +1,43 @@
+.middle-bg {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100vh;
+
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 2rem;
+    margin-top: 3rem;
+    color: #555252;
+  }
+
+  .categories {
+    margin: 2rem 2rem;
+    .category-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #555252;
+    }
+    .category-cards {
+      display: flex;
+      margin: 1rem 0;
+    }
+  }
+
+  .transactions {
+    margin: 2rem 2rem;
+    .transaction-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #555252;
+    }
+    .transaction-cards {
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  
+  .title {
+    margin-top: 3rem;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #555252;
+    margin-left: 20%;
+  }
+  .navitems {
+    margin-top: 3rem;
+    margin-left: 20%;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin-top: 1rem;
+        text-decoration: none;
+        color: #a6b1b0;
+        font-size: 1rem;
+        font-weight: 200;
+        &:hover {
+          color: #000000;
+        }
+      }
+    }
+  }
+}

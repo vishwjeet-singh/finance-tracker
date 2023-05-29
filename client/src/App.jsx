@@ -1,10 +1,10 @@
 import "./App.scss";
-import Page from "./pages/template/Page";
+import Homepage from "./pages/homepage/Homepage";
+
 function App() {
   return (
     <div className="App">
-      hello from next js
-      <Page />
+      <Homepage />
     </div>
   );
 }
