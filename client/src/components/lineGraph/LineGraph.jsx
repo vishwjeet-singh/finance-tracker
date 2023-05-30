@@ -53,14 +53,14 @@ export default function LineGraph({
   //EFFECTS
   //RENDER
   return (
-    <Paper className="design-paper" variant="outlined" sx={{ width: "300px" }}>
+    <Paper className="design-paper" variant="outlined" elevation={1}>
       <div className="heading-container">
         <div>
           <div className="heading">{heading}</div>
           <div className="value">{value}</div>
         </div>
         <div>
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <FormControl sx={{ m: 1, minWidth: 60 }} size="small">
             <Select
               value={timeStamp}
               onChange={handleChange}
