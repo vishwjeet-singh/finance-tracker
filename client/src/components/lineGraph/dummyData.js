@@ -1,4 +1,4 @@
-export const defaultData = {
+export const weeklyData = {
   labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   datasets: [
     {

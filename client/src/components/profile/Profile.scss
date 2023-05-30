@@ -6,7 +6,11 @@
   margin: 1rem 1rem;
   background-color: #979292;
   border-radius: 1rem;
-  
+
+  .material-button {
+    margin-top: 8px;
+  }
+
   .dp {
     margin-top: 2rem;
     height: 4rem;
@@ -14,23 +18,28 @@
     border-radius: 50%;
     background-color: #979292;
   }
+
   .welcome {
     margin-top: 1rem;
     font-size: 1.3rem;
     font-weight: 600;
     color: #555252;
   }
+
   .options {
     margin-top: 1rem;
     width: 50%;
+
     ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
+
       li {
         color: #938d8d;
         margin-bottom: 0.5rem;
       }
+
       .li-items {
         display: flex;
         flex-direction: row;

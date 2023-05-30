@@ -53,46 +53,41 @@ export default function LineGraph({
   //EFFECTS
   //RENDER
   return (
-      <Paper
-        className="design-paper"
-        variant="outlined"
-        sx={{ width: "300px" }}
-        elevation={1}
-      >
-        <div className="heading-container">
-          <div>
-            <div className="heading">{heading}</div>
-            <div className="value">{value}</div>
-          </div>
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-              <Select
-                value={timeStamp}
-                onChange={handleChange}
-                displayEmpty
-                inputProps={{ "aria-label": "Without label" }}
-              >
-                <MenuItem value={"weekly"}>Weekly</MenuItem>
-                <MenuItem value={"monthly"}>Monthly</MenuItem>
-                <MenuItem value={"yearly"}>Yearly</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
+    <Paper className="design-paper" variant="outlined" sx={{ width: "300px" }}>
+      <div className="heading-container">
+        <div>
+          <div className="heading">{heading}</div>
+          <div className="value">{value}</div>
         </div>
-        {err === "defaultData" ? null : (
-          <div>This is just dummy data to show graph</div>
-        )}
-        {err.length === 0 ? (
-          <Chart
-            datasetIdKey="id"
-            type="line"
-            data={data}
-            options={tempoptions}
-          />
-        ) : (
-          <div className="err">{err}</div>
-        )}
-      </Paper>
+        <div>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <Select
+              value={timeStamp}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value={"weekly"}>Weekly</MenuItem>
+              <MenuItem value={"monthly"}>Monthly</MenuItem>
+              <MenuItem value={"yearly"}>Yearly</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+      </div>
+      {err === "defaultData" ? (
+        <div>This is just dummy data to show graph</div>
+      ) : null}
+      {err.length === 0 ? (
+        <Chart
+          datasetIdKey="id"
+          type="line"
+          data={data}
+          options={tempoptions}
+        />
+      ) : (
+        <div className="err">{err}</div>
+      )}
+    </Paper>
   );
 }
 
