@@ -72,12 +72,14 @@ export default function NewTransaction() {
                     label="Title"
                     variant="filled"
                     type="text"
+                    sx={{ width: "100%" }}
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div className="modal-input">
                   <TextField
+                    sx={{ width: "100%" }}
                     id="filled-basic"
                     label="Amount"
                     variant="filled"
@@ -88,6 +90,7 @@ export default function NewTransaction() {
                 </div>
                 <div className="modal-input">
                   <TextField
+                    sx={{ width: "100%" }}
                     id="filled-basic"
                     variant="filled"
                     type="date"
@@ -101,6 +104,8 @@ export default function NewTransaction() {
                   <CircularProgress color="success" />
                 ) : (
                   <Button
+                    sx={{ padding: "1rem",
+                   }}
                     variant="contained"
                     size="small"
                     color="success"

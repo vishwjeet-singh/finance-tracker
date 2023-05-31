@@ -12,7 +12,7 @@ export default function TransactionCard({ category, amount, date }) {
             <div className="date">{date}</div>
           </div>
         </div>
-        <div className="amount">{amount}</div>
+        <div className="amount">${amount}</div>
       </Paper>
     </div>
   );
