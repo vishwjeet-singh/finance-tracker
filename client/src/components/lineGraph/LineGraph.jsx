@@ -53,7 +53,7 @@ export default function LineGraph({
   //EFFECTS
   //RENDER
   return (
-    <Paper className="design-paper" variant="outlined" elevation={1}>
+    <Paper className="design-paper" variant="outlined">
       <div className="heading-container">
         <div>
           <div className="heading">{heading}</div>

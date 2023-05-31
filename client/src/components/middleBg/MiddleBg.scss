@@ -4,19 +4,21 @@
   width: 60%;
   height: 100vh;
 
-  .search-bar { 
+  .search-bar {
     margin: 2rem 2rem;
     margin-top: 3rem;
-    
+
   }
 
   .categories {
     margin: 2rem 2rem;
+
     .category-title {
       font-size: 1.5rem;
       font-weight: 400;
       color: #555252;
     }
+
     .category-cards {
       display: flex;
       margin: 1rem 0;
@@ -25,15 +27,23 @@
 
   .transactions {
     margin: 2rem 2rem;
+
     .transaction-title {
       font-size: 1.5rem;
       font-weight: 400;
       color: #555252;
     }
+
     .transaction-cards {
       margin: 1rem 0;
       display: flex;
       flex-direction: column;
+
+      .transaction-information {
+        text-align: center;
+        color: black;
+        font-size: 1.2rem;
+      }
     }
   }
 }
