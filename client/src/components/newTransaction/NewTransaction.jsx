@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./NewTransaction.scss";
-import { Button, Paper, TextField } from "@mui/material";
+import { Button, Paper, TextField, CircularProgress } from "@mui/material";
 import { GiCancel } from "react-icons/gi";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
 import { UserAuth } from "../../context/AuthContext";
 
 export default function NewTransaction() {

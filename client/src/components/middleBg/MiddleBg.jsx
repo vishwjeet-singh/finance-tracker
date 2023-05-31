@@ -83,7 +83,7 @@ export default function MiddleBg() {
               return (
                 <TransactionCard
                   key={ind}
-                  category={transaction.title}
+                  title={transaction.title}
                   amount={transaction.amount}
                   date={transaction.date}
                 />
