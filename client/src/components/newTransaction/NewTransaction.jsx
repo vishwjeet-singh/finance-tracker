@@ -4,9 +4,10 @@ import { Button, Paper, TextField, CircularProgress } from "@mui/material";
 import { GiCancel } from "react-icons/gi";
 import axios from "axios";
 import { UserAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function NewTransaction() {
-  const { user } = UserAuth();
+  const { user, handleTrigger } = UserAuth();
   //STATES
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -16,6 +17,9 @@ export default function NewTransaction() {
 
   //FUNCTIONS
   const handleSubmit = () => {
+    if (!title.trim() || !amount.trim() || !date.trim()) {
+      return toast.error("Please fill all the fields !");
+    }
     setLoading(true);
     const data = {
       title: title,
@@ -23,10 +27,18 @@ export default function NewTransaction() {
       date: date,
     };
     axios
-      .post(`/${user.email.split("@")[0]}/.json`, data)
+      .post(
+        `/${user.email.split("@")[0]}/.json?auth=${
+          user.stsTokenManager.accessToken
+        }`,
+        data
+      )
       .then((res) => {
         console.log(res);
         setLoading(false);
+        setOpen(false);
+        toast.success("Transaction added !");
+        handleTrigger();
       })
       .then((err) => {
         setLoading(false);
@@ -103,8 +115,7 @@ export default function NewTransaction() {
                   <CircularProgress color="success" />
                 ) : (
                   <Button
-                    sx={{ padding: "1rem",
-                   }}
+                    sx={{ padding: "1rem" }}
                     variant="contained"
                     size="small"
                     color="success"

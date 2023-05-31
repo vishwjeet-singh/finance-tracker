@@ -1,28 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TransactionCard.scss";
 import { Button, Paper, TextField, CircularProgress } from "@mui/material";
 import { GiCancel } from "react-icons/gi";
-export default function TransactionCard({ title, amount, date }) {
+import axios from "axios";
+import { UserAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+export default function TransactionCard({ title, amount, date, theKey }) {
   //STATES
-  const [open, setOpen] = React.useState(false);
-  const [newtitle, setnewTitle] = React.useState(title);
-  const [newamount, setnewAmount] = React.useState(amount);
-  const [newdate, setnewDate] = React.useState(date);
-  const [loading, setLoading] = React.useState(false);
-
+  const { user, handleTrigger } = UserAuth();
+  const [open, setOpen] = useState(false);
+  const [newtitle, setnewTitle] = useState(title);
+  const [newamount, setnewAmount] = useState(amount);
+  const [newdate, setnewDate] = useState(date);
+  const [loading, setLoading] = useState(false);
   //FUNCTIONS
   const handleSubmit = () => {
-  
+    if (title === newtitle && amount === newamount && date === newdate) {
+      toast.error("No changes were made.");
+      return setOpen(false);
+    }
     const newdata = {
       title: newtitle,
       amount: newamount,
       date: newdate,
     };
+    setLoading(true);
+
+    axios
+      .put(
+        `/${user.email.split("@")[0]}/${theKey}.json?auth=${
+          user.stsTokenManager.accessToken
+        }`,
+        newdata
+      )
+      .then(() => {
+        setLoading(false);
+        setOpen(false);
+        toast.success("Transaction updated !");
+        handleTrigger();
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        toast.error("Something went wrong !");
+      });
 
     //axios put request here
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    setLoading(true);
+    axios
+      .delete(
+        `/${user.email.split("@")[0]}/${theKey}.json?auth=${
+          user.stsTokenManager.accessToken
+        }`
+      )
+      .then((res) => {
+        setLoading(false);
+        setOpen(false);
+        toast.success("Transaction deleted !");
+        handleTrigger();
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        toast.error("Something went wrong !");
+      });
+  };
 
   //EFFECTS
   //RENDER
@@ -68,7 +113,7 @@ export default function TransactionCard({ title, amount, date }) {
                     variant="filled"
                     type="text"
                     sx={{ width: "100%" }}
-                    value={title}
+                    value={newtitle}
                     onChange={(e) => setnewTitle(e.target.value)}
                   />
                 </div>
@@ -79,7 +124,7 @@ export default function TransactionCard({ title, amount, date }) {
                     label="Amount"
                     variant="filled"
                     type="number"
-                    value={amount}
+                    value={newamount}
                     onChange={(e) => setnewAmount(e.target.value)}
                   />
                 </div>
@@ -89,7 +134,7 @@ export default function TransactionCard({ title, amount, date }) {
                     id="filled-basic"
                     variant="filled"
                     type="date"
-                    value={date}
+                    value={newdate}
                     onChange={(e) => setnewDate(e.target.value)}
                   />
                 </div>
@@ -118,7 +163,7 @@ export default function TransactionCard({ title, amount, date }) {
                       Delete
                     </Button>
                   </div>
-                )} 
+                )}
               </div>
             </div>
           </div>

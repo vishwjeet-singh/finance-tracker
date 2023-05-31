@@ -12,6 +12,7 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   //STATES
   const [user, setUser] = useState(null);
+  const [trigger, setTrigger] = useState(false);
   //FUNCTIONS
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -19,6 +20,10 @@ export const AuthContextProvider = ({ children }) => {
   };
   const logOut = () => {
     signOut(auth);
+  };
+
+  const handleTrigger = () => {
+    setTrigger(!trigger);
   };
   //EFFECTS
   useEffect(() => {
@@ -36,7 +41,9 @@ export const AuthContextProvider = ({ children }) => {
 
   //RENDER
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    <AuthContext.Provider
+      value={{ googleSignIn, logOut, user, trigger, handleTrigger }}
+    >
       {children}
     </AuthContext.Provider>
   );
