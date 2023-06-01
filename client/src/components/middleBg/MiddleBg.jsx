@@ -68,8 +68,8 @@ export default function MiddleBg() {
         </div>
       </div>
 
+      <div className="transaction-title">Transactions</div>
       <div className="transactions">
-        <div className="transaction-title">Transactions</div>
         <div className="transaction-cards">
           {!user && (
             <div className="transaction-information">
