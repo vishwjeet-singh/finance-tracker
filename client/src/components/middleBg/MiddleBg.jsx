@@ -15,6 +15,11 @@ export default function MiddleBg() {
   useEffect(() => {
     if (user) {
       toast.success("Welcome to your dashboard !");
+    }
+  }, [user]);
+  useEffect(() => {
+    if (user) {
+      // toast.success("Welcome to your dashboard !");
       const id = toast.loading("Loading your transactions...");
       axios
         .get(
