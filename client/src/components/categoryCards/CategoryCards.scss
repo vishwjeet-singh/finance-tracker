@@ -1,10 +1,9 @@
-.cat-container{
-
+.cat-container {
   margin: 1rem 0;
   .category-paper {
     margin-right: 3rem;
     cursor: pointer;
-    
+
     .category-container {
       padding: 0.7rem 1rem;
       background-color: #fb9597;
@@ -19,20 +18,82 @@
         background-color: gray;
         margin-right: 1.5rem;
       }
-    .name-amt {
-      display: flex;
-      flex-direction: column;
-      .category-name {
-        // margin-bottom: 0.2rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-      .category-amount {
-        font-size: 0.8rem;
-        font-weight: 500;
+      .name-amt {
+        display: flex;
+        flex-direction: column;
+        .category-name {
+          // margin-bottom: 0.2rem;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+        .category-amount {
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
       }
     }
   }
-}
+  .the-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1300;
+    background-color: rgba($color: #000000, $alpha: 0.4);
 
+    .modal-container {
+      background-color: white;
+      color: black;
+      padding: 1rem;
+      border-radius: 15px;
+      width: 30%;
+      .modal-content {
+        .modal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 1.5rem;
+          font-weight: 400;
+          color: #555252;
+          margin: 1rem 1rem;
+
+          .modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+        }
+
+        .modal-body {
+          display: flex;
+          flex-direction: column;
+
+          .modal-input {
+            margin: 1rem 1rem;
+            TextField {
+              width: auto;
+            }
+          }
+        }
+
+        .modal-footer {
+          display: flex;
+          justify-content: end;
+          margin: 1rem 1rem;
+          .btns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            Button {
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
