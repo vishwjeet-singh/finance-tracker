@@ -1,21 +1,28 @@
-.new-transaction {
-  .new-trans-paper {
+.add-category {
+  margin: 1rem 0;
+  height: 100%;
+  .add-category-paper {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 1rem;
+    flex-flow: column;
     cursor: pointer;
-    color: #fff;
-    .plus-sign {
-      font-size: 2.2rem;
-      font-weight: 500;
-      margin-right: 1rem;
-    }
+    padding: 0.8rem 1rem;
+    height: 100%;
+    .add-category-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      .plus-sign {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-right: 1rem;
+      }
 
-    .new {
-      font-size: 1.5rem;
-      font-weight: 500;
+      .new {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
     }
   }
 

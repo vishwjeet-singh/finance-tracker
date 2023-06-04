@@ -24,7 +24,7 @@ export default function SearchBar() {
           type="search"
           id="default-search"
           className="search-input"
-          placeholder="Search Mockups, Logos..."
+          placeholder="Search Transactions..."
           required
         />
         <button type="submit" className="search-btn">

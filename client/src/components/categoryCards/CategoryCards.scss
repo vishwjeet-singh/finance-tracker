@@ -1,21 +1,24 @@
-.category-paper {
+.cat-container{
+
   margin: 1rem 0;
-  margin-right: 3rem;
-  
-  .category-container {
-    padding: 0.7rem 1rem;
-    background-color: #fb9597;
-    padding-right: 2rem;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    border-radius: 4px;
-    .category-icon {
-      width: 3rem;
-      height: 3rem;
-      background-color: gray;
-      margin-right: 1.5rem;
-    }
+  .category-paper {
+    margin-right: 3rem;
+    cursor: pointer;
+    
+    .category-container {
+      padding: 0.7rem 1rem;
+      background-color: #fb9597;
+      padding-right: 2rem;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      border-radius: 4px;
+      .category-icon {
+        width: 3rem;
+        height: 3rem;
+        background-color: gray;
+        margin-right: 1.5rem;
+      }
     .name-amt {
       display: flex;
       flex-direction: column;
@@ -30,4 +33,6 @@
       }
     }
   }
+}
+
 }

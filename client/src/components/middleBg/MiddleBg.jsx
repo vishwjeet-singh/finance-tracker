@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./MiddleBg.scss";
 import CategoryCards from "../categoryCards/CategoryCards";
 import TransactionCard from "../transactionCard/TransactionCard";
+import AddCategoryCard from "../addCategoryCard/AddCategoryCard";
+import Balance from "../balance/Balance";
 import SearchBar from "../searchBar/SearchBar";
 import { UserAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
@@ -63,6 +65,7 @@ export default function MiddleBg() {
     <div className="middle-bg">
       <div className="search-bar">
         <SearchBar />
+        <Balance/>
       </div>
 
       <div className="categories">
@@ -70,6 +73,7 @@ export default function MiddleBg() {
         <div className="category-cards">
           <CategoryCards />
           <CategoryCards />
+          <AddCategoryCard />
         </div>
       </div>
 
