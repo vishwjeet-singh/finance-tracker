@@ -18,6 +18,19 @@ export default function CategoryCards({ title, color }) {
   const [open, setOpen] = useState(false);
   const [newtitle, setnewTitle] = useState(title);
   const [newcolor, setnewColor] = useState(color);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (event) => {
+    console.log("category updated");
+  };
+  const handleSubmit = () => {
+    console.log("clicked");
+  };
+
+  const handleDelete = () => {
+    console.log("delete clicked");
+  };
+
   return (
     <div className="cat-container">
       <Paper
