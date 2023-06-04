@@ -10,8 +10,9 @@ import { toast } from "react-toastify";
 import axios from "axios";
 export default function MiddleBg() {
   //STATES
-  const { user, trigger } = UserAuth();
+  const { user, trigger, handleExpense } = UserAuth();
   const [transactions, setTransactions] = useState(null);
+  const [allCategories, setAllCategories] = useState(null);
   //FUNCTIONS
   //EFFECTS
   useEffect(() => {
@@ -31,6 +32,16 @@ export default function MiddleBg() {
         )
         .then((res) => {
           const tempData = [];
+          const categoriesData = {
+            housing: 0,
+            transportation: 0,
+            taxes: 0,
+            food: 0,
+            childExpenses: 0,
+            healthCare: 0,
+            insurance: 0,
+            utilities: 0,
+          };
           if (res.data) {
             toast.update(id, {
               render: "Transactions loaded !",
@@ -38,10 +49,18 @@ export default function MiddleBg() {
               isLoading: false,
               autoClose: 2000,
             });
+            let expense = 0;
             Object.keys(res.data).map((key) => {
               tempData.push({ ...res.data[key], key: key });
               // setTransactions(res.data[key]);
+              categoriesData[res.data[key].category] += +res.data[key].amount;
+              expense += +res.data[key].amount;
             });
+            const sortable = Object.entries(categoriesData)
+              .sort(([, a], [, b]) => b - a)
+              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+            setAllCategories(sortable);
+            handleExpense(expense);
           } else {
             toast.update(id, {
               render: "You have no transactions.",
@@ -65,15 +84,27 @@ export default function MiddleBg() {
     <div className="middle-bg">
       <div className="search-bar">
         <SearchBar />
-        <Balance/>
+        <Balance />
       </div>
 
       <div className="categories">
         <div className="category-title">Categories</div>
         <div className="category-cards">
-          <CategoryCards />
-          <CategoryCards />
-          <AddCategoryCard />
+          {user &&
+            allCategories &&
+            Object.keys(allCategories)
+              .slice(0, 2)
+              .map((category, idx) => {
+                if (allCategories[category] === 0) return;
+                return (
+                  <CategoryCards
+                    key={idx}
+                    category={category}
+                    amount={allCategories[category]}
+                  />
+                );
+              })}
+          {/* <AddCategoryCard /> */}
         </div>
       </div>
 
@@ -101,6 +132,7 @@ export default function MiddleBg() {
                   amount={transaction.amount}
                   date={transaction.date}
                   theKey={transaction.key}
+                  category={transaction.category}
                 />
               );
             })}

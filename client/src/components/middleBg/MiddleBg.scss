@@ -9,6 +9,7 @@
     margin-top: 3rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .categories {
@@ -23,6 +24,7 @@
     .category-cards {
       display: flex;
       margin: 1rem 0;
+      flex-wrap: wrap;
     }
   }
 

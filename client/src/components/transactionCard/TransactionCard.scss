@@ -13,6 +13,7 @@
     width: 100%;
     color: #555252;
     cursor: pointer;
+
     .icon-name-date {
       display: flex;
       flex-direction: row;
@@ -22,17 +23,26 @@
         height: 3rem;
         background-color: gray;
         margin-right: 1.5rem;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
       }
+
       .name-date {
         .name {
           font-size: 1.2rem;
           font-weight: 600;
         }
+
         .date {
           font-size: 0.7rem;
         }
       }
     }
+
     .amount {
       font-size: 1.2rem;
       font-weight: 600;
@@ -57,6 +67,7 @@
       padding: 1rem;
       border-radius: 15px;
       width: 30%;
+
       .modal-content {
         .modal-header {
           display: flex;
@@ -79,6 +90,7 @@
 
           .modal-input {
             margin: 1rem 1rem;
+
             TextField {
               width: auto;
             }
@@ -89,12 +101,13 @@
           display: flex;
           justify-content: end;
           margin: 1rem 1rem;
-          .btns{
+
+          .btns {
             display: flex;
             justify-content: center;
             align-items: center;
 
-            Button{
+            Button {
               margin-left: 1rem;
             }
           }

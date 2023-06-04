@@ -12,12 +12,10 @@ import {
   MenuItem,
 } from "@mui/material";
 import { UserAuth } from "../../context/AuthContext";
-export default function CategoryCards({ title, color }) {
+export default function CategoryCards({ category, amount }) {
   //STATES
   const { user, handleTrigger } = UserAuth();
   const [open, setOpen] = useState(false);
-  const [newtitle, setnewTitle] = useState(title);
-  const [newcolor, setnewColor] = useState(color);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
@@ -35,20 +33,25 @@ export default function CategoryCards({ title, color }) {
     <div className="cat-container">
       <Paper
         className="category-paper"
-        onClick={() => {
-          if (user) setOpen(true);
-        }}
+        // onClick={() => {
+        //   if (user) setOpen(true);
+        // }}
         elevation={1}
       >
         <div className="category-container">
-          <div className="category-icon"></div>
+          <div className="category-icon">
+            <img
+              src={`assets/categories/${category}.jpg`}
+              alt="a unique image"
+            />
+          </div>
           <div className="name-amt">
-            <div className="category-name">Housing Loan</div>
-            <div className="category-amount">45,000</div>
+            <div className="category-name">{category}</div>
+            <div className="category-amount">${amount}</div>
           </div>
         </div>
       </Paper>
-      {user && open && (
+      {/* {user && open && (
         <div className="the-modal">
           <div className="modal-container">
             <div className="modal-content">
@@ -123,7 +126,7 @@ export default function CategoryCards({ title, color }) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import "./TransactionCard.scss";
-import { Button, Paper, TextField, CircularProgress } from "@mui/material";
+import {
+  Button,
+  Paper,
+  TextField,
+  CircularProgress,
+  InputLabel,
+  Select,
+  FormControl,
+  MenuItem,
+} from "@mui/material";
 import { GiCancel } from "react-icons/gi";
 import axios from "axios";
 import { UserAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
-export default function TransactionCard({ title, amount, date, theKey }) {
+// import housing from "../../assets/categories/housing.jpg";
+export default function TransactionCard({
+  title,
+  amount,
+  date,
+  category,
+  theKey,
+}) {
   //STATES
   const { user, handleTrigger } = UserAuth();
   const [open, setOpen] = useState(false);
@@ -13,9 +29,15 @@ export default function TransactionCard({ title, amount, date, theKey }) {
   const [newamount, setnewAmount] = useState(amount);
   const [newdate, setnewDate] = useState(date);
   const [loading, setLoading] = useState(false);
+  const [newCategory, setNewCategory] = useState(category);
   //FUNCTIONS
   const handleSubmit = () => {
-    if (title === newtitle && amount === newamount && date === newdate) {
+    if (
+      title === newtitle &&
+      amount === newamount &&
+      date === newdate &&
+      category === newCategory
+    ) {
       toast.error("No changes were made.");
       return setOpen(false);
     }
@@ -23,6 +45,7 @@ export default function TransactionCard({ title, amount, date, theKey }) {
       title: newtitle,
       amount: newamount,
       date: newdate,
+      category: newCategory,
     };
     setLoading(true);
 
@@ -82,7 +105,9 @@ export default function TransactionCard({ title, amount, date, theKey }) {
         className="transaction-paper"
       >
         <div className="icon-name-date">
-          <div className="icon"></div>
+          <div className="icon">
+            <img src={`assets/categories/${category}.jpg`} alt="icon" />
+          </div>
           <div className="name-date">
             <div className="name">{title}</div>
             <div className="date">{date}</div>
@@ -137,6 +162,33 @@ export default function TransactionCard({ title, amount, date, theKey }) {
                     value={newdate}
                     onChange={(e) => setnewDate(e.target.value)}
                   />
+                </div>
+                <div className="modal-input">
+                  <FormControl variant="standard" sx={{ width: "100%" }}>
+                    <InputLabel id="demo-simple-select-standard-label">
+                      Category
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-standard-label"
+                      id="demo-simple-select-standard"
+                      value={newCategory}
+                      onChange={(e) => setNewCategory(e.target.value)}
+                      label="Category"
+                    >
+                      <MenuItem value={"housing"}>Housing</MenuItem>
+                      <MenuItem value={"transportation"}>
+                        Transportation
+                      </MenuItem>
+                      <MenuItem value={"taxes"}>Taxes</MenuItem>
+                      <MenuItem value={"food"}>Food</MenuItem>
+                      <MenuItem value={"childExpenses"}>
+                        Child Expenses
+                      </MenuItem>
+                      <MenuItem value={"healthCare"}>Healthcare</MenuItem>
+                      <MenuItem value={"insurance"}>Insurance</MenuItem>
+                      <MenuItem value={"utilities"}>Utilities</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
               </div>
               <div className="modal-footer">

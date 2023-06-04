@@ -23,11 +23,11 @@ export default function NewTransaction() {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("housing");
 
   //FUNCTIONS
   const handleSubmit = () => {
-    if (!title.trim() || !amount.trim() || !date.trim()) {
+    if (!title.trim() || !amount.trim() || !date.trim() || !category.trim()) {
       return toast.error("Please fill all the fields !");
     }
     setLoading(true);
@@ -35,6 +35,7 @@ export default function NewTransaction() {
       title: title,
       amount: amount,
       date: date,
+      category: category,
     };
     axios
       .post(
@@ -54,9 +55,6 @@ export default function NewTransaction() {
         setLoading(false);
         console.log(err);
       });
-  };
-  const handleChange = () => {
-    console.log("handle change");
   };
   //EFFECTS
   //RENDER
@@ -131,16 +129,21 @@ export default function NewTransaction() {
                       labelId="demo-simple-select-standard-label"
                       id="demo-simple-select-standard"
                       value={category}
-                      onChange={handleChange}
+                      onChange={(e) => setCategory(e.target.value)}
                       label="Category"
-                      
                     >
-                      <MenuItem value="">
-                        <em>None</em>
+                      <MenuItem value={"housing"}>Housing</MenuItem>
+                      <MenuItem value={"transportation"}>
+                        Transportation
                       </MenuItem>
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem>
+                      <MenuItem value={"taxes"}>Taxes</MenuItem>
+                      <MenuItem value={"food"}>Food</MenuItem>
+                      <MenuItem value={"childExpenses"}>
+                        Child Expenses
+                      </MenuItem>
+                      <MenuItem value={"healthCare"}>Healthcare</MenuItem>
+                      <MenuItem value={"insurance"}>Insurance</MenuItem>
+                      <MenuItem value={"utilities"}>Utilities</MenuItem>
                     </Select>
                   </FormControl>
                 </div>

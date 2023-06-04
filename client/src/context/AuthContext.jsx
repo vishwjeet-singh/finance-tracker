@@ -13,6 +13,7 @@ export const AuthContextProvider = ({ children }) => {
   //STATES
   const [user, setUser] = useState(null);
   const [trigger, setTrigger] = useState(false);
+  const [expense, setExpense] = useState(0);
   //FUNCTIONS
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -24,6 +25,9 @@ export const AuthContextProvider = ({ children }) => {
 
   const handleTrigger = () => {
     setTrigger(!trigger);
+  };
+  const handleExpense = (expense) => {
+    setExpense(expense);
   };
   //EFFECTS
   useEffect(() => {
@@ -42,7 +46,15 @@ export const AuthContextProvider = ({ children }) => {
   //RENDER
   return (
     <AuthContext.Provider
-      value={{ googleSignIn, logOut, user, trigger, handleTrigger }}
+      value={{
+        googleSignIn,
+        logOut,
+        user,
+        trigger,
+        handleTrigger,
+        expense,
+        handleExpense,
+      }}
     >
       {children}
     </AuthContext.Provider>
