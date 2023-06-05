@@ -13,6 +13,7 @@ import {
 import { GiCancel } from "react-icons/gi";
 import axios from "axios";
 import { UserAuth } from "../../context/AuthContext";
+import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 
 export default function NewTransaction() {
@@ -24,6 +25,7 @@ export default function NewTransaction() {
   const [date, setDate] = useState("");
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("housing");
+  const [isClosing, setIsClosing] = useState(false);
 
   //FUNCTIONS
   const handleSubmit = () => {
@@ -66,7 +68,10 @@ export default function NewTransaction() {
         elevation={1}
         sx={{ backgroundColor: "#70C1FF" }}
         onClick={() => {
-          if (user) setOpen(true);
+          if (user) {
+            setOpen(true);
+            setIsClosing(false);
+          }
         }}
       >
         <div className="plus-sign">+</div>
@@ -74,14 +79,28 @@ export default function NewTransaction() {
       </Paper>
       {user && open && (
         <div className="the-modal">
-          <div className="modal-container">
+          <motion.div
+            initial={{
+              opacity: isClosing ? 1 : 0.2,
+              scale: isClosing ? 1 : 0.1,
+            }}
+            animate={{
+              opacity: isClosing ? 0.2 : 1,
+              scale: isClosing ? 0.2 : 1,
+            }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className="modal-container"
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <div className="modal-title">Add Transaction</div>
                 <div
                   className="modal-close"
                   onClick={() => {
-                    setOpen(false);
+                    setIsClosing(true);
+                    setTimeout(() => {
+                      setOpen(false);
+                    }, 300);
                   }}
                 >
                   <GiCancel />
@@ -164,7 +183,7 @@ export default function NewTransaction() {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

@@ -13,6 +13,7 @@ import {
 import { GiCancel } from "react-icons/gi";
 import axios from "axios";
 import { UserAuth } from "../../context/AuthContext";
+import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 // import housing from "../../assets/categories/housing.jpg";
 export default function TransactionCard({
@@ -30,6 +31,8 @@ export default function TransactionCard({
   const [newdate, setnewDate] = useState(date);
   const [loading, setLoading] = useState(false);
   const [newCategory, setNewCategory] = useState(category);
+  const [isClosing, setIsClosing] = useState(false);
+
   //FUNCTIONS
   const handleSubmit = () => {
     if (
@@ -101,6 +104,7 @@ export default function TransactionCard({
         elevation={1}
         onClick={() => {
           setOpen(true);
+          setIsClosing(false);
         }}
         className="transaction-paper"
       >
@@ -117,14 +121,28 @@ export default function TransactionCard({
       </Paper>
       {open && (
         <div className="the-modal">
-          <div className="modal-container">
+          <motion.div
+            className="modal-container"
+            initial={{
+              opacity: isClosing ? 1 : 0.2,
+              scale: isClosing ? 1 : 0.1,
+            }}
+            animate={{
+              opacity: isClosing ? 0.2 : 1,
+              scale: isClosing ? 0.2 : 1,
+            }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <div className="modal-title">Edit Transaction</div>
                 <div
                   className="modal-close"
                   onClick={() => {
-                    setOpen(false);
+                    setIsClosing(true);
+                    setTimeout(() => {
+                      setOpen(false);
+                    }, 300);
                   }}
                 >
                   <GiCancel />
@@ -218,7 +236,7 @@ export default function TransactionCard({
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

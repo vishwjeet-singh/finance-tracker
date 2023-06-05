@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
       <div className="nav-bar">
         <div className="title">
-          Tracker
+          Coin Control
         </div>
         <div className="navitems">
           <ul>
