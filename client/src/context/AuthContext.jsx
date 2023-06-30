@@ -14,6 +14,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [trigger, setTrigger] = useState(false);
   const [expense, setExpense] = useState(0);
+  const [allWeeklyTransactions, setAllWeeklyTransactions] = useState([]);
   //FUNCTIONS
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -28,6 +29,9 @@ export const AuthContextProvider = ({ children }) => {
   };
   const handleExpense = (expense) => {
     setExpense(expense);
+  };
+  const handleAllWeeklyTransactions = (transactions) => {
+    setAllWeeklyTransactions(transactions);
   };
   //EFFECTS
   useEffect(() => {
@@ -54,6 +58,8 @@ export const AuthContextProvider = ({ children }) => {
         handleTrigger,
         expense,
         handleExpense,
+        allWeeklyTransactions,
+        handleAllWeeklyTransactions,
       }}
     >
       {children}

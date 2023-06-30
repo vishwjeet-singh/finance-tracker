@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import { Paper } from "@mui/material";
@@ -51,6 +51,14 @@ export default function LineGraph({
     }
   };
   //EFFECTS
+  useEffect(() => {
+    if (weeklyData) {
+      setData(weeklyData);
+      setErr("");
+    } else {
+      setErr("no data");
+    }
+  }, [weeklyData]);
   //RENDER
   return (
     <Paper className="design-paper" variant="outlined">

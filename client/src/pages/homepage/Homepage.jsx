@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Homepage.scss";
 import Navbar from "../../components/navbar/Navbar";
 import MiddleBg from "../../components/middleBg/MiddleBg";
@@ -8,7 +8,7 @@ export default function Homepage() {
     <div className="container">
       <Navbar />
       <MiddleBg />
-      <RightBg/>
+      <RightBg />
       <div className="RBG"></div>
     </div>
   );

@@ -7,10 +7,11 @@ import Balance from "../balance/Balance";
 import SearchBar from "../searchBar/SearchBar";
 import { UserAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
-import axios from "axios";
-export default function MiddleBg() {
+import axios, { all } from "axios";
+export default function MiddleBg({ handleTransactions }) {
   //STATES
-  const { user, trigger, handleExpense } = UserAuth();
+  const { user, trigger, handleExpense, handleAllWeeklyTransactions } =
+    UserAuth();
   const [transactions, setTransactions] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
   //FUNCTIONS
@@ -32,6 +33,7 @@ export default function MiddleBg() {
         )
         .then((res) => {
           const tempData = [];
+          const allTransactions = [];
           const categoriesData = {
             housing: 0,
             transportation: 0,
@@ -55,6 +57,7 @@ export default function MiddleBg() {
               // setTransactions(res.data[key]);
               categoriesData[res.data[key].category] += +res.data[key].amount;
               expense += +res.data[key].amount;
+              allTransactions.push(+res.data[key].amount);
             });
             const sortable = Object.entries(categoriesData)
               .sort(([, a], [, b]) => b - a)
@@ -70,6 +73,7 @@ export default function MiddleBg() {
             });
           }
           setTransactions(tempData);
+          handleAllWeeklyTransactions(allTransactions);
         })
         .catch((err) => {
           toast.error("Something went wrong !");
